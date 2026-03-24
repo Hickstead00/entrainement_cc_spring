@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Gestionnaire de Decks MTG</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎴 Gestionnaire de Decks Magic: The Gathering</h1>
+            <nav>
+                <a th:href="@{/}">Accueil</a> |
+                <a th:href="@{/cards}">Cartes</a> |
+                <a th:href="@{/decks}">Mes Decks</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="welcome-box">
+                <h2 th:text="${message}">Message de bienvenue</h2>
+                <p>
+                    <strong th:text="${totalCards}">0</strong> cartes disponibles dans la collection.
+                </p>
+            </div>
+
+            <div class="quick-links">
+                <h3>Accès rapide</h3>
+                <div class="buttons">
+                    <a th:href="@{/cards}" class="btn btn-primary">Voir toutes les cartes</a>
+                    <a th:href="@{/decks/new}" class="btn btn-success">Créer un nouveau deck</a>
+                    <a th:href="@{/decks}" class="btn btn-info">Mes decks</a>
+                </div>
+            </div>
+
+            <div class="info">
+                <h3>📚 À propos</h3>
+                <p>
+                    Ce projet vous permet de créer et gérer vos decks Magic: The Gathering.
+                    Parcourez la collection de cartes, créez vos decks personnalisés,
+                    et assurez-vous qu'ils sont valides (30 cartes exactement).
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 - Gestionnaire de Decks MTG - Projet d'entraînement Spring MVC</p>
+        </footer>
+    </div>
+</body>
+</html>

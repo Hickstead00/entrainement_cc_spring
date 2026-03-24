@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Decks - MTG Deck Manager</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Mes Decks</h1>
+            <nav>
+                <a th:href="@{/}">Accueil</a> |
+                <a th:href="@{/cards}">Cartes</a> |
+                <a th:href="@{/decks}">Mes Decks</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="actions">
+                <a th:href="@{/decks/new}" class="btn btn-success">+ Créer un nouveau deck</a>
+            </div>
+
+            <p class="deck-count">
+                Vous avez <strong th:text="${#lists.size(decks)}">0</strong> deck(s)
+            </p>
+
+            <!-- Liste des decks -->
+            <div class="deck-list">
+                <div class="deck-item" th:each="deck : ${decks}">
+                    <div class="deck-header">
+                        <h3 th:text="${deck.name}">Nom du deck</h3>
+                        <span class="deck-status"
+                              th:classappend="${deck.valid ? 'valid' : 'invalid'}">
+                            <span th:if="${deck.valid}">✓ Valide</span>
+                            <span th:unless="${deck.valid}">✗ Invalide</span>
+                        </span>
+                    </div>
+
+                    <div class="deck-body">
+                        <p class="deck-description" th:text="${deck.description}">Description du deck</p>
+
+                        <div class="deck-stats">
+                            <span><strong th:text="${deck.totalCards}">0</strong> cartes</span>
+                            <span th:if="${!deck.valid}">
+                                (Manque <strong th:text="${30 - deck.totalCards}">30</strong> carte(s))
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="deck-actions">
+                        <a th:href="@{/decks/{id}(id=${deck.id})}" class="btn btn-primary">Voir</a>
+                        <a th:href="@{/deck-builder/{id}(id=${deck.id})}" class="btn btn-info">Éditer</a>
+                        <form th:action="@{/decks/{id}/delete(id=${deck.id})}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Supprimer ce deck ?')">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message si aucun deck -->
+            <div th:if="${#lists.isEmpty(decks)}" class="no-results">
+                <p>Vous n'avez pas encore créé de deck.</p>
+                <p><a th:href="@{/decks/new}" class="btn btn-success">Créer votre premier deck</a></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 - Gestionnaire de Decks MTG</p>
+        </footer>
+    </div>
+</body>
+</html>

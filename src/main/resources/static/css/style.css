@@ -1,0 +1,554 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* ===== Header ===== */
+header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 15px;
+    font-size: 2.5em;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* ===== Main Content ===== */
+main {
+    padding: 40px;
+}
+
+/* ===== Boutons ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+    margin: 5px;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+}
+
+.btn-success {
+    background: #48bb78;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #38a169;
+}
+
+.btn-danger {
+    background: #f56565;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #e53e3e;
+}
+
+.btn-info {
+    background: #4299e1;
+    color: white;
+}
+
+.btn-info:hover {
+    background: #3182ce;
+}
+
+.btn-secondary {
+    background: #718096;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #4a5568;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+/* ===== Home Page ===== */
+.welcome-box {
+    background: #f7fafc;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.welcome-box h2 {
+    color: #2d3748;
+    margin-bottom: 15px;
+}
+
+.quick-links {
+    margin: 30px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.info {
+    background: #edf2f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* ===== Card Grid ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card-item {
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    padding: 15px;
+    background: #4a5568;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.mana-cost {
+    background: #2d3748;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-type {
+    font-style: italic;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.card-colors {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.color-badge {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #2d3748;
+    min-height: 60px;
+}
+
+.creature-stats {
+    background: #edf2f7;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.rarity-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.card-header.common { background: #718096; }
+.card-header.rare { background: #4299e1; }
+.card-header.epic { background: #9f7aea; }
+.card-header.legendary { background: #ed8936; }
+
+.card-footer {
+    padding: 10px 15px;
+    background: #f7fafc;
+    text-align: center;
+}
+
+/* ===== Search Box ===== */
+.search-box {
+    background: #f7fafc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.search-box form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #cbd5e0;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.card-count {
+    font-size: 1.1em;
+    margin: 15px 0;
+    color: #4a5568;
+}
+
+/* ===== Deck List ===== */
+.deck-list {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.deck-item {
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.deck-item:hover {
+    border-color: #667eea;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.deck-header {
+    padding: 15px 20px;
+    background: #f7fafc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.deck-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.deck-status.valid {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.deck-status.invalid {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.deck-body {
+    padding: 20px;
+}
+
+.deck-description {
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.deck-stats {
+    color: #718096;
+    font-size: 0.95em;
+}
+
+.deck-actions {
+    padding: 15px 20px;
+    background: #f7fafc;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* ===== Forms ===== */
+.deck-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cbd5e0;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.error {
+    display: block;
+    color: #e53e3e;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.info-box {
+    background: #bee3f8;
+    border-left: 4px solid #4299e1;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+/* ===== Card/Deck Detail ===== */
+.card-detail, .deck-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-header-large, .deck-header-large {
+    background: #4a5568;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.card-header-large.common { background: #718096; }
+.card-header-large.rare { background: #4299e1; }
+.card-header-large.epic { background: #9f7aea; }
+.card-header-large.legendary { background: #ed8936; }
+
+.mana-cost-large {
+    font-size: 1.5em;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.card-info, .deck-info {
+    background: #f7fafc;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.info-row {
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.rules-box {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 2px solid #e2e8f0;
+}
+
+.flavor-box {
+    background: #fefcbf;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #744210;
+}
+
+.deck-status-large {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.deck-status-large.valid {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.deck-status-large.invalid {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.deck-statistics {
+    background: #f7fafc;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stat-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+}
+
+.deck-cards {
+    background: #f7fafc;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ===== No Results ===== */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #718096;
+}
+
+.no-results p {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+/* ===== Footer ===== */
+footer {
+    background: #2d3748;
+    color: #cbd5e0;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box form {
+        flex-direction: column;
+    }
+
+    .deck-actions {
+        flex-direction: column;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+}

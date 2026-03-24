@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${card.name} + ' - Détails'">Détails de la carte</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎴 Détails de la Carte</h1>
+            <nav>
+                <a th:href="@{/}">Accueil</a> |
+                <a th:href="@{/cards}">Cartes</a> |
+                <a th:href="@{/decks}">Mes Decks</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="card-detail">
+                <div class="card-header-large" th:classappend="${card.rarity.name().toLowerCase()}">
+                    <h2 th:text="${card.name}">Nom de la carte</h2>
+                    <span class="mana-cost-large" th:text="${card.manaCost}"></span>
+                </div>
+
+                <div class="card-info">
+                    <div class="info-row">
+                        <strong>Type :</strong>
+                        <span th:text="${card.fullType}">Type complet</span>
+                    </div>
+
+                    <div class="info-row">
+                        <strong>Coût de mana converti :</strong>
+                        <span th:text="${card.convertedManaCost}">0</span>
+                    </div>
+
+                    <div class="info-row">
+                        <strong>Couleur(s) :</strong>
+                        <span th:each="color, iterStat : ${card.colors}">
+                            <span th:text="${color.displayName}">Couleur</span>
+                            <span th:if="${!iterStat.last}">, </span>
+                        </span>
+                        <span th:if="${#lists.isEmpty(card.colors)}">Incolore</span>
+                    </div>
+
+                    <div class="info-row">
+                        <strong>Rareté :</strong>
+                        <span class="rarity-badge" th:text="${card.rarity.displayName}">Commune</span>
+                    </div>
+
+                    <div class="info-row" th:if="${card.creature}">
+                        <strong>Force/Endurance :</strong>
+                        <span th:text="${card.stats}">0/0</span>
+                    </div>
+
+                    <div class="rules-box">
+                        <strong>Texte de règles :</strong>
+                        <p th:text="${card.rulesText}">Texte de règles de la carte</p>
+                    </div>
+
+                    <div class="flavor-box" th:if="${card.flavorText}">
+                        <em th:text="${card.flavorText}">Texte d'ambiance</em>
+                    </div>
+
+                    <div class="info-row" th:if="${card.expansion}">
+                        <strong>Extension :</strong>
+                        <span th:text="${card.expansion}">Extension</span>
+                    </div>
+
+                    <div class="info-row" th:if="${card.artist}">
+                        <strong>Artiste :</strong>
+                        <span th:text="${card.artist}">Artiste</span>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <a th:href="@{/cards}" class="btn btn-secondary">Retour à la liste</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 - Gestionnaire de Decks MTG</p>
+        </footer>
+    </div>
+</body>
+</html>

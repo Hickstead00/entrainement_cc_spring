@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${deck.name} + ' - Détails'">Détails du deck</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Détails du Deck</h1>
+            <nav>
+                <a th:href="@{/}">Accueil</a> |
+                <a th:href="@{/cards}">Cartes</a> |
+                <a th:href="@{/decks}">Mes Decks</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="deck-detail">
+                <div class="deck-header-large">
+                    <h2 th:text="${deck.name}">Nom du deck</h2>
+                    <span class="deck-status-large"
+                          th:classappend="${deck.valid ? 'valid' : 'invalid'}">
+                        <span th:if="${deck.valid}">✓ Deck Valide</span>
+                        <span th:unless="${deck.valid}">✗ Deck Invalide</span>
+                    </span>
+                </div>
+
+                <div class="deck-description">
+                    <p th:text="${deck.description}">Description du deck</p>
+                </div>
+
+                <div class="deck-statistics" th:if="${stats}">
+                    <h3>📊 Statistiques</h3>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <strong>Cartes totales :</strong>
+                            <span th:text="${stats.totalCards}">0</span> / 30
+                        </div>
+                        <div class="stat-item">
+                            <strong>Cartes uniques :</strong>
+                            <span th:text="${stats.uniqueCards}">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>CMC moyen :</strong>
+                            <span th:text="${stats.averageCmc}">0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deck-cards">
+                    <h3>🎴 Composition du Deck</h3>
+                    <p th:if="${#maps.isEmpty(deck.cards)}">
+                        Ce deck ne contient aucune carte pour le moment.
+                    </p>
+
+                    <!-- À compléter : affichage des cartes du deck -->
+                    <p th:unless="${#maps.isEmpty(deck.cards)}">
+                        Ce deck contient <strong th:text="${deck.totalCards}">0</strong> carte(s).
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <a th:href="@{/deck-builder/{id}(id=${deck.id})}" class="btn btn-primary">Éditer le deck</a>
+                    <a th:href="@{/decks}" class="btn btn-secondary">Retour</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 - Gestionnaire de Decks MTG</p>
+        </footer>
+    </div>
+</body>
+</html>
