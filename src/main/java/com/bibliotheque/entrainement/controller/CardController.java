@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +21,16 @@ public class CardController {
     }
 
     @GetMapping("/cards")
-    public String cards(Model model) {
-        List<Card> cards = cardService.getAllCards();
+    public String cards(@RequestParam (required = false) String search, Model model) {
+        List<Card> cards;
+
+        if (search != null && !search.isEmpty()) {
+            cards = cardService.searchByName(search);
+        } else {
+            cards = cardService.getAllCards();
+        }
+
+        model.addAttribute("search", search);
         model.addAttribute("cards", cards);
         return "cards/list";
     }
@@ -36,5 +45,4 @@ public class CardController {
             return "redirect:/cards";
         }
     }
-
 }
