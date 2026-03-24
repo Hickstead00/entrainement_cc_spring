@@ -1,26 +1,27 @@
 package com.bibliotheque.entrainement.controller;
 
 import com.bibliotheque.entrainement.model.Deck;
+import com.bibliotheque.entrainement.service.CardService;
 import com.bibliotheque.entrainement.service.DeckService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/decks")
 public class DeckController {
 
-    DeckService deckService;
+    private final CardService cardService;
+    private final DeckService deckService;
 
-    public DeckController(DeckService deckService) {
+    public DeckController(DeckService deckService, CardService cardService) {
         this.deckService = deckService;
+        this.cardService = cardService;
     }
 
     @GetMapping
@@ -44,6 +45,18 @@ public class DeckController {
         }
         deckService.saveDeck(deck);
         return "redirect:/decks";
+    }
+
+    @GetMapping("/{id}")
+    public String showDeck(@PathVariable Long id, Model model) {
+        Optional<Deck> deck = deckService.getDeckById(id);
+        if (deck.isPresent()) {
+            model.addAttribute("deck", deck.get());
+            model.addAttribute("stats", deckService.getDeckStats(id, cardService));
+            return "decks/detail";
+        } else {
+            return "redirect:/decks";
+        }
     }
 
 }
